@@ -34,7 +34,7 @@ def main():
             frame = results[0].plot()
             
             # 滑鼠移動
-            # if keyboard.is_pressed('l'):
+        if keyboard.is_pressed('x'):
             move_mouse_to_head(results)
             
             # 計算 FPS

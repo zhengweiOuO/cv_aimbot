@@ -8,7 +8,7 @@ class PoseVisualizer:
         """
         self.window_name = window_name
         cv2.namedWindow(self.window_name, cv2.WINDOW_NORMAL)
-        cv2.resizeWindow(self.window_name, 1280, 720)
+        cv2.resizeWindow(self.window_name, 1920, 1080)
 
     def show(self, frame, fps=None):
         """

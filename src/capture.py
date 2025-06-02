@@ -15,7 +15,7 @@ class GameCapture:
         self.last_frame_time = 0
         self.frame_interval = 1.0 / fps_limit
     
-    def start(self, width = 1920, height = 1080):
+    def start(self, width = 2560, height = 1440):
         """啟動捕捉"""
         self.cap = cv2.VideoCapture(self.camera_id)
         if not self.cap.isOpened():

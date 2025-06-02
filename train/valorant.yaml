@@ -1,0 +1,8 @@
+train: /mnt/c/Users/zhengwei/aimbot/yolov12-main/CSGO-YOLOv8/train/datasets/valorant/images/train
+val: /mnt/c/Users/zhengwei/aimbot/yolov12-main/CSGO-YOLOv8/train/datasets/valorant/images/validation
+
+names:
+  0: dropped spike
+  1: enemy
+  2: planted spike
+  3: teammate

@@ -1,0 +1,16 @@
+# 基本依賴
+opencv-python>=4.7.0
+mediapipe>=0.10.0
+numpy>=1.22.0
+
+# 畫面捕獲
+mss>=7.0.0
+
+# 效能與工具
+matplotlib>=3.6.0
+tqdm>=4.64.0
+
+# 可選依賴 (視需求啟用)
+ultralytics>=8.0.0  # 若使用 YOLOv8-pose
+torch>=2.0.0        # 若使用 PyTorch
+torchvision>=0.15.0 # 若使用 PyTorch

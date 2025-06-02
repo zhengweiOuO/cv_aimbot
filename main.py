@@ -1,15 +1,21 @@
 import cv2
 import time
 import numpy as np
+import pyautogui
+import keyboard
 from src.capture import GameCapture
-from src.detector import PoseDetector
 from src.visualizer import PoseVisualizer
+from src.move import move_mouse_to_head
+from ultralytics import YOLO
+from pynput import mouse
+from pynput.mouse import Controller
 
 def main():
     # 初始化各模組
     capture = GameCapture(camera_id=0).start()  # 0 是 OBS 虛擬攝影機或其他攝影機裝置
-    detector = PoseDetector()
+    detector = YOLO('C:/Users/zhengwei/aimbot/yolov12-main/CSGO-YOLOv8/train/runs/detect/valorant-yolo12n/weights/best.pt')
     visualizer = PoseVisualizer()
+    controller = Controller()
     
     # FPS 計算
     fps_counter = 0
@@ -24,10 +30,12 @@ def main():
                 continue
             
             # 姿勢檢測
-            results = detector.detect(frame)
+            results = detector(frame, conf=0.3)
+            frame = results[0].plot()
             
-            # 繪製關鍵點
-            frame = detector.draw_landmarks(frame, results)
+            # 滑鼠移動
+            # if keyboard.is_pressed('l'):
+            move_mouse_to_head(results)
             
             # 計算 FPS
             fps_counter += 1
@@ -36,7 +44,7 @@ def main():
                 current_fps = fps_counter / (current_time - fps_start_time)
                 fps_counter = 0
                 fps_start_time = current_time
-            
+
             # 顯示結果
             if not visualizer.show(frame, current_fps):
                 break
